@@ -13,6 +13,7 @@ https://pat.comp.nus.edu.sg/?page_id=2660
 运行下载的安装程序，按照提示完成安装。
 
 二、mCRL2 安装指南
+
 2.1 工具简介
 mCRL2 是一个用于分析并发系统行为的形式化验证工具集，支持进程代数建模、模型检测和性能分析等功能。
 
@@ -33,3 +34,30 @@ https://www.python.org/downloads/
 运行安装程序，务必勾选“Add Python to PATH”（将 Python 添加到系统环境变量），然后点击“Install Now”。
 
 三、实验步骤
+
+1.1、实验条件需求
+硬件：计算机一台（建议选择Windows 10及以上系统）；
+软件：已安装PAT、mCRL2、python。
+
+1.2、实验步骤
+使用PAT工具中的“simulation”进行系统的仿真，点击“Process”并选择“System”后点击“Generate Graph”生成的状态空间。
+
+将缓冲区大小为1-10的异步组合仿真后生成的状态空间图依次导出，导出文件为txt格式，点击“Expor”导出txt文件。
+
+在Python中将txt文件转换成.mcrl2文件。
+
+运行mCRL2后找到转换后的.mcrl2文件的保存路径。
+
+右击缓冲区大小为1的异步组合的.mcrl2文件，并依次点击“Transformation”、“mcrl22lps”。点击“Run”生成对应的.lps文件。
+
+右击缓冲区大小为1的异步组合的.lps文件，并依次点击“Transformation”、“lps2lts”。点击“Run”生成对应的.lts文件。
+
+继续生成缓冲区大小为2-10的异步组合的.lts文件。
+
+右击缓冲区大小为2的异步组合的.lts文件，并依次点击“Analysis”、“Itscompare”。
+
+选择“Weak-Bisimulation”后点击“Browse”。找到缓冲区大小为1异步组合的.lts文件的保存路径并点击“打开”。
+
+点击“Run”对缓冲区大小为2的异步组合和缓冲区大小为1的异步组合进行等价检测。
+
+所示结果为“false”，则表明缓冲区大小为2的异步组合和缓冲区大小为1的异步组合不等价，需要继续比较缓冲区大小为k和k+1的异步组合直到等价检测结果为“true”时终止。若k≥10，则方法不确定性终止，系统稳定值未知。
