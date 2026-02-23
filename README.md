@@ -40,6 +40,8 @@ https://www.python.org/downloads/
 软件：已安装PAT、mCRL2、python。
 
 1.2、实验步骤
+
+编码为CSP#，在ECA文件中
 使用PAT工具中的“simulation”进行系统的仿真，点击“Process”并选择“System”后点击“Generate Graph”生成的状态空间。
 
 将缓冲区大小为1-10的异步组合仿真后生成的状态空间图依次导出，导出文件为txt格式，点击“Expor”导出txt文件。
